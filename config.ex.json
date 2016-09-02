@@ -1,0 +1,14 @@
+{
+	"debug": false,
+	"prefix": "!",
+	"slack": {
+		"token": "slack rtm token",
+		"botid": "slack bot userid"
+	},
+	"plugins": {
+		"PluginName": {
+			"setting": "setting_data",
+			"setting2": "setting2_data"
+		}
+	}
+}

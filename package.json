@@ -1,0 +1,27 @@
+{
+  "name": "frc-slack-bot",
+  "version": "0.0.0",
+  "description": "A Slack bot for FRC teams",
+  "main": "bot.js",
+  "license": "MIT",
+  "author": {
+    "name": "Andrew Dassonville",
+    "email": "dassonville.andrew@gmail.com",
+    "url": "http://andrewda.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewda/frc-slack-bot.git"
+  },
+  "dependencies": {
+  },
+  "bugs": {
+    "url": "https://github.com/andrewda/frc-slack-bot/issues"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+    "start": "node bot.js"
+  }
+}
