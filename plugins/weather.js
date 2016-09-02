@@ -87,7 +87,7 @@ module.exports = {
 		        message = 'Long pants are required for work in the Foundry.';
 		    }
 
-			return '@channel - High Tomorrow: ' + temp + '\n' + message + '\n\n' + '_(if there are any issues with this bot, please contact @andrew)_'
+			return 'High Tomorrow: ' + temp + '\n' + message + '\n\n' + '_(if there are any issues with this bot, please contact @andrew)_'
 		}
 	}
 }
