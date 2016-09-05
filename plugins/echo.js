@@ -11,7 +11,7 @@ module.exports = {
 		console.log('Plugin Loaded:', plugin.getName(), '-', plugin.getDescription());
 
 		events.on('message', function(msg) {
-			plugin.send(plugin.stripCommand(msg.text), msg.channel);
+			plugin.rtm.sendMessage(plugin.stripCommand(msg.text), msg.channel);
 		});
 	}
 }

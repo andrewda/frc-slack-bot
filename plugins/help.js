@@ -21,7 +21,7 @@ module.exports = {
 				message += '\n' + plugin.command + ' - ' + plugin.description;
 			});
 
-			plugin.send(message, msg.channel);
+			plugin.rtm.sendMessage(message, msg.channel);
 		});
 	}
 }

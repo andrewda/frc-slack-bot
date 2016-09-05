@@ -21,9 +21,9 @@ module.exports = {
 				if (err) {
 					console.log(err);
 
-					plugin.send('Error performing request: ' + err.message, msg.channel);
+					plugin.rtm.sendMessage('Error performing request: ' + err.message, msg.channel);
 				} else {
-					plugin.send('Team Name: ' + info.nickname + '\n' +
+					plugin.rtm.sendMessage('Team Name: ' + info.nickname + '\n' +
 								'Motto: ' + info.motto + '\n' +
 								'Location: ' + info.location + '\n' +
 								'Rookie Year: ' + info.rookie_year + '\n' +

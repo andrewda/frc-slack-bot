@@ -49,7 +49,7 @@ module.exports = {
 		                }
 		            });
 
-		            plugin.send(createMessage(high), msg.channel);
+		            plugin.rtm.sendMessage(createMessage(high), msg.channel);
 		        }
 		    });
 		});
@@ -73,7 +73,7 @@ module.exports = {
 		                }
 		            });
 
-		            plugin.send(createMessage(high), weatherConfig.channel);
+		            plugin.rtm.sendMessage(createMessage(high), weatherConfig.channel);
 		        }
 		    });
 		});
