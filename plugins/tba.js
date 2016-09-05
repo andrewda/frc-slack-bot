@@ -8,7 +8,7 @@ module.exports = {
 		name: 'Teams',
 		description: 'Get team data from TheBlueAlliance',
 		command: 'team',
-		syntax: 'team <teamid>',
+		syntax: '<teamid>',
 		test: true
 	},
 	main: function(plugin, events) {

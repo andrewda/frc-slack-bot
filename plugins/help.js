@@ -6,7 +6,7 @@ module.exports = {
 		name: 'Help',
 		description: 'Display a help message',
 		command: 'help',
-		syntax: 'help [plugin]',
+		syntax: '[plugin]',
 		test: true
 	},
 	main: function(plugin, events) {

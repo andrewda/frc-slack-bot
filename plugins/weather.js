@@ -9,7 +9,7 @@ module.exports = {
 		name: 'Weather',
 		description: 'Get weather data from weather.gov',
 		command: 'weather',
-		syntax: 'weather [latitude] [longitude]',
+		syntax: '[latitude] [longitude]',
 		test: true
 	},
 	main: function(plugin, events) {

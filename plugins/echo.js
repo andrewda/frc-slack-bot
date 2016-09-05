@@ -4,7 +4,7 @@ module.exports = {
 		name: 'Echo',
 		description: 'Echo the user',
 		command: 'echo',
-		syntax: 'echo <message>',
+		syntax: '<message>',
 		test: true
 	},
 	main: function(plugin, events) {
