@@ -14,7 +14,7 @@ module.exports = function(message) {
 				if (this.testSyntax(message.text)) {
 					this.events.emit('message', message);
 				} else {
-					this.send(this.getSyntaxMessage(), message.channel);
+					this.rtm.sendMessage(this.getSyntaxMessage(), message.channel);
 				}
 			}
 		} else {
