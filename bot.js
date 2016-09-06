@@ -5,22 +5,37 @@ var EventEmitter = require('events').EventEmitter;
 var fs = require('fs-extra');
 var path = require('path');
 
-var plugins = [];
+var listeners = new Map();
+var plugins = new Map();
+
+module.exports.getListeners = function() {
+	return listeners;
+};
 
 module.exports.getPlugins = function() {
 	return plugins;
 };
 
-var files = fs.readdirSync(path.join(__dirname, 'plugins'));
-files.forEach(function(file) {
+var listenerFiles = fs.readdirSync(path.join(__dirname, 'listeners'));
+listenerFiles.forEach(function(file) {
+	if (file.endsWith('.js')) {
+		var listener = require('./listeners/' + file);
+
+		listeners.set(file.replace('.js', ''), listener);
+	}
+});
+
+var pluginFiles = fs.readdirSync(path.join(__dirname, 'plugins'));
+pluginFiles.forEach(function(file) {
 	if (file.endsWith('.js')) {
 		var plugin = require('./plugins/' + file);
+		var pluginConfig = new PluginConfig(plugin.config);
 
 		var eventEmitter = new EventEmitter();
-		var bot = new SlackBot(eventEmitter, plugin.config);
+		var bot = new SlackBot(eventEmitter, pluginConfig);
 
 		plugin.main(bot, eventEmitter);
 
-		plugins.push(new PluginConfig(plugin.config));
+		plugins.set(pluginConfig.name, pluginConfig);
 	}
 });
