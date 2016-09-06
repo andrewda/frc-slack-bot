@@ -15,11 +15,11 @@ module.exports = {
 	main: function(plugin, events) {
 		console.log('Plugin Loaded:', plugin.getName(), '-', plugin.getDescription());
 
-		var weatherConfig = config.plugins[plugin.getName()];
+		var pluginConfig = config.plugins[plugin.getName()];
 
 		var rule = new schedule.RecurrenceRule();
-		rule.dayOfWeek = weatherConfig.meeting_days.map(function(m) { return ((m - 1) > 0) ? m - 1 : 6 });
-		rule.hour = weatherConfig.update_hour;
+		rule.dayOfWeek = pluginConfig.meeting_days.map(function(m) { return ((m - 1) > 0) ? m - 1 : 6 });
+		rule.hour = pluginConfig.update_hour;
 		rule.minute = 0;
 
 		events.on('message', function(msg) {
@@ -35,7 +35,7 @@ module.exports = {
 		        if (err) {
 		            console.log(err);
 
-					plugin.send('Error performing request: ' + err.message, weatherConfig.channel);
+					plugin.send('Error performing request: ' + err.message, pluginConfig.channel);
 		        } else {
 		            var high = 0;
 		            data.forEach(function(forecast) {
@@ -59,7 +59,7 @@ module.exports = {
 		        if (err) {
 		            console.log(err);
 
-					plugin.send('Error performing request: ' + err.message, weatherConfig.channel);
+					plugin.send('Error performing request: ' + err.message, pluginConfig.channel);
 		        } else {
 		            var high = 0;
 		            data.forEach(function(forecast) {
@@ -73,7 +73,7 @@ module.exports = {
 		                }
 		            });
 
-		            plugin.rtm.sendMessage(createMessage(high), weatherConfig.channel);
+		            plugin.rtm.sendMessage(createMessage(high), pluginConfig.channel);
 		        }
 		    });
 		});
