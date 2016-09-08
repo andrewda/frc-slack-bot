@@ -37,16 +37,16 @@ module.exports = {
 
 Config options:
 
-`name`: **[required]** The plugin's name
-`description`: **[required]** The plugin's description
-`command`: The command to trigger the plugin
-`syntax`: The command's syntax
-`test`: `true` to emit only messages with the correct command and syntax (default `true` when `command` is defined)
+- `name`: **[required]** The plugin's name
+- `description`: **[required]** The plugin's description
+- `command`: The command to trigger the plugin
+- `syntax`: The command's syntax
+- `test`: `true` to emit only messages with the correct command and syntax (default `true` when `command` is defined)
 
 Plugin parameters:
 
-`plugin`: An instance of SlackBot (found in ../lib/index.js)
-`events`: An EventEmitter object
+- `plugin`: An instance of SlackBot (found in ../lib/index.js)
+- `events`: An EventEmitter object
 
 ### Custom Listeners
 
@@ -75,4 +75,4 @@ module.exports = function(message) {
 
 Listener parameters:
 
-`message`: A standard Slack message object
+- `message`: A standard Slack message object
