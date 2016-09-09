@@ -52,6 +52,8 @@ Plugin parameters:
 
 Listeners must be named after the event they listen for. For example, the file below is named "message.js" and listens for the "message" event. When the event is fired, it will use this function instead of defaulting to a simply emitting the message.
 
+To access `rtm`, `config`, etc., you may reference `this` as all listeners will be executed using the parent scope. 
+
 ```javascript
 module.exports = function(message) {
 	var identifier = '<@' + this.config.slack.botid + '>'
