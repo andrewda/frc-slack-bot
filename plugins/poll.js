@@ -41,8 +41,8 @@ module.exports = {
 				if (msg.reactions) {
 					msg.reactions.forEach(function(reaction) {
 						switch (reaction.name) {
-							case '+1': results.yes++; break;
-							case '-1': results.no++; break;
+							case '+1': results.yes = reaction.count; break;
+							case '-1': results.yes = reaction.count; break;
 						}
 					});
 				}
