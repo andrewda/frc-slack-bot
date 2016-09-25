@@ -18,7 +18,9 @@ module.exports = {
 			var message = 'Command List\n-----------------------';
 
 			plugins.forEach(function(plugin) {
-				message += '\n' + plugin.command + ' - ' + plugin.description;
+				if (plugin.command && plugin.description) {
+					message += '\n' + plugin.command + ' - ' + plugin.description;
+				}
 			});
 
 			plugin.rtm.sendMessage(message, msg.channel);
