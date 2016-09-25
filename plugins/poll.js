@@ -57,8 +57,8 @@ module.exports = {
 		}
 
 		function updatePoll(user, question, yes, no) {
-			return `*POLL _(created by <@${user}>)_*` +
-					`\n` +
+			return `Poll _(created by <@${user}>)_` +
+					`\n-----------------------` +
 					`\n${question}` +
 					`\n` +
 					`\n"Yes" votes (:+1: reaction) - ${yes}` +
