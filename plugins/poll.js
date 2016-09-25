@@ -26,34 +26,41 @@ module.exports = {
 		function reactionHandler(msg) {
 			var channel = msg.item.channel;
 
-			plugin.web.reactions.get({
-				channel: channel,
-				timestamp: msg.item.ts,
-				full: true
-			}, function(err, reactions) {
-				var results = {
-					yes: 0,
-					no: 0
-				};
+			if (msg.item_user === config.slack.botid) {
+				plugin.web.reactions.get({
+					channel: channel,
+					timestamp: msg.item.ts,
+					full: true
+				}, function(err, reactions) {
+					var msg = reactions.message;
 
-				var msg = reactions.message;
+					var userExists = /<@(.*)>/.test(msg.text);
+					var newlines = msg.text.split('\n').length;
 
-				if (msg.reactions) {
-					msg.reactions.forEach(function(reaction) {
-						switch (reaction.name) {
-							case '+1': results.yes = reaction.count; break;
-							case '-1': results.no = reaction.count; break;
+					if (userExists && newlines >= 3) {
+						var results = {
+							yes: 0,
+							no: 0
+						};
+
+						var user = msg.text.match(/<@(.*)>/)[1];
+						var question = msg.text.split('\n')[2].trim();
+
+						if (msg.reactions) {
+							msg.reactions.forEach(function(reaction) {
+								switch (reaction.name) {
+									case '+1': results.yes = reaction.count; break;
+									case '-1': results.no = reaction.count; break;
+								}
+							});
 						}
-					});
-				}
 
-				var user = msg.text.match(/<@(.*)>/)[1];
-				var question = msg.text.split('\n')[2].trim();
+						var message = updatePoll(user, question, results.yes, results.no);
 
-				var message = updatePoll(user, question, results.yes, results.no);
-
-				plugin.web.chat.update(msg.ts, channel, message);
-			});
+						plugin.web.chat.update(msg.ts, channel, message);
+					}
+				});
+			}
 		}
 
 		function updatePoll(user, question, yes, no) {
