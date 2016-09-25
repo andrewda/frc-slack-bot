@@ -1,6 +1,7 @@
 {
 	"debug": false,
 	"prefix": "!",
+	"requireMention": false,
 	"slack": {
 		"token": "slack rtm token",
 		"botid": "slack bot userid"

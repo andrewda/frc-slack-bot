@@ -1,4 +1,6 @@
 
+var config = require('../config.json');
+
 module.exports = function(message) {
 	/**
 	 * This function is called from the scope of index.js, so
@@ -6,7 +8,7 @@ module.exports = function(message) {
 	 */
 
 	var identifier = '<@' + this.config.slack.botid + '>'
-	if (message.text && message.text.split(' ')[0] === identifier) {
+	if (message.text && (message.text.split(' ')[0] === identifier || !config.requireMention)) {
 		message.text = message.text.replace(identifier, '').trim();
 
 		if (this.pluginConfig.test || !this.getCommand()) {
